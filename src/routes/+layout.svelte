@@ -2,6 +2,34 @@
 	import '../app.css';
 	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
 	import { DarkMode } from 'flowbite-svelte';
+	import { page } from '$app/stores';
+
+	const pages = [
+		{
+			name: 'Home',
+			url: '/'
+		},
+		{
+			name: 'Photography',
+			url: '/photography'
+		},
+		{
+			name: 'Music',
+			url: '/music'
+		},
+		{
+			name: 'Coding',
+			url: '/coding'
+		},
+		{
+			name: 'About Me',
+			url: '/about'
+		},
+		{
+			name: 'Contact',
+			url: '/contact'
+		}
+	];
 </script>
 
 <div class="relative">
@@ -14,12 +42,9 @@
 		</NavBrand>
 		<NavHamburger on:click={toggle} />
 		<NavUl {hidden}>
-			<NavLi href="/" active={true}>Home</NavLi>
-			<NavLi href="/photography">Photography</NavLi>
-			<NavLi href="/music">Music</NavLi>
-			<NavLi href="/coding">Coding</NavLi>
-			<!-- <NavLi href="/about">About Me</NavLi> -->
-			<NavLi href="/contact">Contact</NavLi>
+			{#each pages as { name, url }}
+				<NavLi href={`${url}`} active={$page.url.pathname === url}>{name}</NavLi>
+			{/each}
 		</NavUl>
 		<DarkMode />
 	</Navbar>
