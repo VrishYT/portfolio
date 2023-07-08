@@ -1,53 +1,8 @@
 <script>
 	import '../app.css';
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
-	import { DarkMode } from 'flowbite-svelte';
-	import { page } from '$app/stores';
-
-	const pages = [
-		{
-			name: 'Home',
-			url: '/'
-		},
-		{
-			name: 'Photography',
-			url: '/photography'
-		},
-		{
-			name: 'Music',
-			url: '/music'
-		},
-		{
-			name: 'Coding',
-			url: '/coding'
-		},
-		{
-			name: 'About Me',
-			url: '/about'
-		},
-		{
-			name: 'Contact',
-			url: '/contact'
-		}
-	];
+	import Navbar  from './navbar.svelte';
 </script>
 
-<div class="relative">
-	<Navbar let:hidden let:toggle>
-		<NavBrand href="/">
-			<img src="vrish-logo.png" class="mr-3 h-8 sm:h-9" alt="Vrish Logo" />
-			<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-				Vrish || Rishi Khiroya
-			</span>
-		</NavBrand>
-		<NavHamburger on:click={toggle} />
-		<NavUl {hidden}>
-			{#each pages as { name, url }}
-				<NavLi href={`${url}`} active={$page.url.pathname === url}>{name}</NavLi>
-			{/each}
-		</NavUl>
-		<DarkMode />
-	</Navbar>
-</div>
+<Navbar />
 
 <slot />
