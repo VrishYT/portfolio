@@ -8,7 +8,7 @@
 
 	let images: Image[] = [];
 
-	const imageModules = import.meta.glob('../../photo/*.jpg');
+	const imageModules = import.meta.glob('/src/photo/photography/*.jpg');
 	for (const modulePath in imageModules) {
 		imageModules[modulePath]().then(({ default: imageUrl }) => {
 			const slash = modulePath.lastIndexOf('/');
