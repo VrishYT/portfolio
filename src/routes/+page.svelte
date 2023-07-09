@@ -1,0 +1,3 @@
+<p class="align-middle justify-center text-black dark:text-white bg-white dark:bg-slate-900 relative w-full h-full font-8xl font-semibold flex p-10">
+    Website under construction...
+</p>
