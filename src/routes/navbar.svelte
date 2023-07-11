@@ -31,7 +31,7 @@
 	];
 </script>
 
-<div class="relative">
+<div class="w-screen shadow-slate-200 dark:shadow-gray-950 shadow-sm-light">
 	<Navbar let:hidden let:toggle>
 		<NavBrand href="/">
 			<img src="vrish-logo.png" class="mr-3 h-8 sm:h-9" alt="Vrish Logo" />
