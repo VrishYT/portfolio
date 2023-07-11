@@ -39,12 +39,12 @@
 				Vrish || Rishi Khiroya
 			</span>
 		</NavBrand>
-		<DarkMode />
 		<NavHamburger on:click={toggle} />
 		<NavUl {hidden}>
 			{#each pages as { name, url }}
 				<NavLi href={`${url}`} active={$page.url.pathname === url}>{name}</NavLi>
 			{/each}
 		</NavUl>
+		<DarkMode/>
 	</Navbar>
 </div>
