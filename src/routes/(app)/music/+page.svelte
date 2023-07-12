@@ -4,16 +4,15 @@
 
 	import { Play } from '@steeze-ui/heroicons';
 	import * as fs from 'fs';
-	import type { musicProject } from '../../Interfaces';
-	import { musicProjectsStore } from '../../Store';
-	import type { getStores } from '$app/stores';
+	import type { MusicProject } from './Utils';
+	import { musicProjectsStore } from '../../../Store';
 
 	const jsonString = fs.readFileSync('./src/assets/music.json', 'utf-8');
 	const data = JSON.parse(jsonString);
-	// export const projects = new Map<string, musicProject>();
+	// export const projects = new Map<string, MusicProject>();
 
-	let projects: Map<string, musicProject>;
-	musicProjectsStore.subscribe((data: Map<string, musicProject>) => (projects = data));
+	let projects: Map<string, MusicProject>;
+	musicProjectsStore.subscribe((data: Map<string, MusicProject>) => (projects = data));
 
 	data.forEach(
 		(project: {

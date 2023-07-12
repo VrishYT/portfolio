@@ -1,4 +1,4 @@
-export interface musicProject {
+export interface MusicProject {
     title: string;
     img: string;
     links: {
@@ -10,3 +10,5 @@ export interface musicProject {
     tags: string[];
     visible: boolean;
 }
+
+export enum 
