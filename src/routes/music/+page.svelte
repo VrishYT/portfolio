@@ -1,26 +1,19 @@
 <script lang="ts">
-	import { Card } from 'flowbite-svelte';
+	import { Button, Card } from 'flowbite-svelte';
 	import { Icon } from '@steeze-ui/svelte-icon';
 
 	import { Play } from '@steeze-ui/heroicons';
 	import * as fs from 'fs';
-
-	interface musicProject {
-		title: string;
-		img: string;
-		links: {
-			spotify: string | undefined;
-			soundcloud: string | undefined;
-			youtube: string | undefined;
-		};
-		dateCreated: Date;
-		tags: string[];
-		visible: boolean;
-	}
+	import type { musicProject } from '../../Interfaces';
+	import { musicProjectsStore } from '../../Store';
+	import type { getStores } from '$app/stores';
 
 	const jsonString = fs.readFileSync('./src/assets/music.json', 'utf-8');
 	const data = JSON.parse(jsonString);
-	const projects = new Map<string, musicProject>();
+	// export const projects = new Map<string, musicProject>();
+
+	let projects: Map<string, musicProject>;
+	musicProjectsStore.subscribe((data: Map<string, musicProject>) => (projects = data));
 
 	data.forEach(
 		(project: {
@@ -41,26 +34,10 @@
 			});
 		}
 	);
-    console.log(projects);
-
-	function toggleMenu(id: string) {
-		const { title, img, links, dateCreated, tags, visible } = data.get(id);
-		data.set(id, {
-			title,
-			img,
-			links,
-			dateCreated,
-			tags,
-			visible: !visible
-		});
-	}
+	musicProjectsStore.update(() => projects);
 </script>
 
 <div class="flex p-10 justify-center space-x-5">
-	<!-- <Card img="https://i1.sndcdn.com/avatars-l6uKhpIzJC7sdu4Y-ysXDZA-t500x500.jpg">
-		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Empty</h5>
-		<p class="mb-3 font-normal text-gray-700 dark:text-gray-400 leading-tight">Lofi, Chill</p>
-	</Card> -->
 	{#each [...projects] as [id, { title, img, links, dateCreated, tags, visible }] (id)}
 		<Card {img}>
 			<div class="flex flex-row justify-between">
@@ -77,9 +54,9 @@
 						<a href="/music">#{tag} </a>
 					{/each}
 				</p>
-				<button on:click={() => toggleMenu(id)} class="flex rounded hover:border-gray-700">
+				<Button href="/music/{id}" color="none">
 					<Icon src={Play} size="24px" theme="solid" />
-				</button>
+				</Button>
 			</div>
 		</Card>
 	{/each}
