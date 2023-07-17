@@ -9,6 +9,11 @@ export interface MusicProject {
     dateCreated: Date;
     tags: string[];
     visible: boolean;
+    type: MusicProjectType;
 }
 
-export enum 
+export enum MusicProjectType {
+    RELEASE = " ",
+    wip = "WIP",
+    ID = "ID"
+}
