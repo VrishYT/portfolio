@@ -1,3 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
+import { DB_API_KEY } from '$env/static/private';
 
-export const supabase = createClient('https://fzrnynqnijbwvccckmxe.supabase.co', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ6cm55bnFuaWpid3ZjY2NrbXhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODkxOTQyOTIsImV4cCI6MjAwNDc3MDI5Mn0.BJCE7rof0xYe0LJo-FUDUnt3PP74aNK9NdFPJrITm_M");
+export const supabase = createClient('https://fzrnynqnijbwvccckmxe.supabase.co', DB_API_KEY);
