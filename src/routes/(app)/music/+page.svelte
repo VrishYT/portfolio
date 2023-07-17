@@ -3,37 +3,31 @@
 	import { Icon } from '@steeze-ui/svelte-icon';
 
 	import { Play } from '@steeze-ui/heroicons';
-	import * as fs from 'fs';
 	import type { MusicProject } from './Utils';
-	import { musicProjectsStore } from '../../../Store';
 
-	const jsonString = fs.readFileSync('./src/assets/music.json', 'utf-8');
-	const data = JSON.parse(jsonString);
-	// export const projects = new Map<string, MusicProject>();
+	export let data;
 
-	let projects: Map<string, MusicProject>;
-	musicProjectsStore.subscribe((data: Map<string, MusicProject>) => (projects = data));
+	let projects = new Map<string, MusicProject>();
 
-	data.forEach(
+	data && data.projects && data.projects.forEach(
 		(project: {
 			id: string;
 			title: string;
 			img: string;
 			links: any;
-			dateCreated: string;
+			created_at: string;
 			tags: string[];
 		}) => {
-			projects.set(project.id, {
+			projects.set(project.title.toLowerCase(), {
 				title: project.title,
 				img: project.img,
 				links: project.links,
-				dateCreated: new Date(project.dateCreated),
+				dateCreated: new Date(project.created_at),
 				tags: project.tags,
 				visible: false
 			});
 		}
 	);
-	musicProjectsStore.update(() => projects);
 </script>
 
 <div class="flex p-10 justify-center space-x-5">
