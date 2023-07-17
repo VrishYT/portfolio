@@ -17,7 +17,7 @@
 bg-gradient-to-br 
 from-white via-slate-200 to-slate-600 
 dark:from-black dark:via-slate-800 dark:to-slate-700 
-bg-animate h-screen">
+bg-animate min-h-screen h-max">
 <Navbar />
 <slot />
 <Footer />
