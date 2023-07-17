@@ -25,6 +25,6 @@
 	console.log(images);
 </script>
 
-<div class='items-center p-10 '>
-	<Gallery items={images} class="gap-4 grid-cols-2 md:grid-cols-3"/>
+<div class='items-center p-5'>
+	<Gallery items={images} class="gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"/>
 </div>
