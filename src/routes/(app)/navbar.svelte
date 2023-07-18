@@ -23,10 +23,6 @@
 		{
 			name: 'About Me',
 			url: '/about'
-		},
-		{
-			name: 'Contact',
-			url: '/contact'
 		}
 	];
 </script>
