@@ -1,30 +1,23 @@
 <script lang="ts">
-	import { Gallery } from 'flowbite-svelte';
+	import { Carousel, CarouselTransition } from "flowbite-svelte";
+	import { slide } from "svelte/transition";
 
-	type Image = {
-		alt: string;
-		src: string;
-	};
+	export let data;
+	let images: {
+		id: number;
+		name: string;
+		imgurl: string;
+	}[] = [];
 
-	let images: Image[] = [];
-
-	const imageModules = import.meta.glob('/src/photo/photography/*.jpg');
-	for (const modulePath in imageModules) {
-		imageModules[modulePath]().then(({ default: imageUrl }) => {
-			const slash = modulePath.lastIndexOf('/');
-			const dot = modulePath.lastIndexOf('.');
-			const name = modulePath.substring(slash + 1, dot);
-			console.log(`${name}: ${imageUrl}`);
-			images.push({
-				alt: name,
-				src: imageUrl
-			});
-			images = images;
+	data &&
+		data.photos &&
+		data.photos.forEach((photo) => {
+			images = [photo, ...images];
 		});
-	}
+
 	console.log(images);
 </script>
 
-<div class='items-center p-5'>
-	<Gallery items={images} class="gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"/>
+<div class="flex p-10 justify-center">
+	<Carousel {images} loop showCaptions={false} showThumbs={false} divClass="object-contain" duration={5000}/>
 </div>
