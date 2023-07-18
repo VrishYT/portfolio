@@ -15,8 +15,6 @@
 	import { page } from '$app/stores';
 	import { slide } from 'svelte/transition';
 
-	const url = $page.url;
-
 	let resourcesModal = false,
 		contactModal = false,
 		legalModal = false;
@@ -44,12 +42,13 @@
 	}
 
 	onMount(() => {
+		const url = $page.url;
 		const enquirySuccess = url.searchParams.get('enquirySuccess');
 		console.log(enquirySuccess);
 		if (enquirySuccess) enquirySuccess === 'true' ? successTrigger() : failTrigger();
 	});
 
-	let category: string;
+	let category: string | undefined;
 	let categories = [
 		{
 			value: 'photo',
@@ -68,6 +67,18 @@
 			name: 'Other'
 		}
 	];
+
+	function contactButton() {
+		const url = $page.url;
+		category = url.pathname.includes('photography')
+			? 'photo'
+			: url.pathname.includes('music')
+			? 'music'
+			: url.pathname.includes('coding')
+			? 'coding'
+			: undefined;
+		contactModal = !contactModal;
+	}
 </script>
 
 <div>
@@ -140,7 +151,7 @@
 				<Button
 					color="none"
 					class="text-gray-600 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200"
-					on:click={() => (contactModal = !contactModal)}>Contact</Button
+					on:click={contactButton}>Contact</Button
 				>
 				<Button
 					color="none"
@@ -211,6 +222,6 @@
 			<Textarea name="message" placeholder="Your message..." rows="4" required />
 		</Label>
 		<Button type="submit" class="w-full1">Submit</Button>
-		<Input name="url" class="hidden" value={$page.url.pathname}/>
+		<Input name="url" class="hidden" value={$page.url.pathname} />
 	</form>
 </Modal>
