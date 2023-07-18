@@ -15,7 +15,7 @@
 			images = [photo, ...images];
 		});
 
-	console.log(images);
+	// console.log(images);
 </script>
 
 <div class="flex p-10 justify-center">
