@@ -15,5 +15,6 @@ export interface MusicProject {
 export enum MusicProjectType {
     RELEASE = " ",
     wip = "WIP",
-    ID = "ID"
+    ID = "ID",
+    UR = "Flip"
 }
