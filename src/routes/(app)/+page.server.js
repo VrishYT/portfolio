@@ -9,7 +9,7 @@ export const actions = {
 
         const url = data.get('url');
 
-        const success = true;
+        const success = false;
 
         const redirectUrl = `${url}?enquirySuccess=${success}`
         console.log("redirect to: ", redirectUrl)
