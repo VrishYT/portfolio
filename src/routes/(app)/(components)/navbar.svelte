@@ -27,7 +27,7 @@
 	];
 </script>
 
-<div class="w-screen shadow-slate-200 dark:shadow-gray-950 shadow-sm-light">
+<div class="shadow-slate-200 dark:shadow-gray-950 shadow-sm-light">
 	<Navbar let:hidden let:toggle>
 		<div class="flex space-x-0 lg:space-x-10">
 			<NavBrand href="/">
