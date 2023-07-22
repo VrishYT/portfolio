@@ -31,5 +31,5 @@ export async function load({ url }) {
 		: order.ascending;
 	let { data } = await supabase.from('music').select().order(order.column, { ascending });
 
-	return { projects: data };
+	return { projects: data, ascending };
 }
