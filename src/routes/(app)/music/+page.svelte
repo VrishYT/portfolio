@@ -5,7 +5,7 @@
 
 	import { ArrowsUpDown } from '@steeze-ui/heroicons';
 	import { page } from '$app/stores';
-	
+
 	export let data;
 
 	let projects = new Map<string, MusicProject>();
@@ -54,20 +54,32 @@
 	<Button color="light" class="dark:hidden" data-sveltekit-reload href={invertOrder()}>
 		<Icon src={ArrowsUpDown} size="20px" theme="solid" /></Button
 	>
-	<Button color="dark" class="hidden dark:inline-flex"><Chevron>Sort by:</Chevron></Button>
+	<Button color="dark" class="hidden dark:inline-flex"
+		><Chevron
+			><p class="capitalize font-semibold">
+				Sort by: <span class="font-normal pl-1">{data.orderBy}</span>
+			</p></Chevron
+		></Button
+	>
 	<Dropdown>
 		<DropdownItem data-sveltekit-reload href={updateOrder('date')}>Date</DropdownItem>
 		<DropdownItem data-sveltekit-reload href={updateOrder('name')}>Name</DropdownItem>
 		<DropdownItem data-sveltekit-reload href={updateOrder('type')}>Type</DropdownItem>
 	</Dropdown>
-	<Button color="light" class="dark:hidden"><Chevron>Sort by:</Chevron></Button>
+	<Button color="light" class="dark:hidden"
+		><Chevron
+			><p class="capitalize font-semibold">
+				Sort by: <span class="font-normal pl-1">{data.orderBy}</span>
+			</p></Chevron
+		></Button
+	>
 	<Dropdown>
 		<DropdownItem data-sveltekit-reload href={updateOrder('date')}>Date</DropdownItem>
 		<DropdownItem data-sveltekit-reload href={updateOrder('name')}>Name</DropdownItem>
 		<DropdownItem data-sveltekit-reload href={updateOrder('type')}>Type</DropdownItem>
 	</Dropdown>
 </div>
-<div class="flex p-10 justify-center">
+<div class="flex p-10 pt-5 justify-center">
 	<Gallery class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
 		{#each [...projects] as [id, { title, img, dateCreated, tags, type }] (id)}
 			<Card {img} class="w-80" rounded shadow href="/music/{id}">
