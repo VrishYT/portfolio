@@ -6,6 +6,12 @@ export interface CodingProject {
 	desc: string;
 	tags: string[];
 	stack: TechType[];
+	links: { label: string; url: string }[];
+	collaborators: string[];
+}
+
+export interface IncomingCodingProject extends CodingProject {
+	id: string;
 }
 
 export enum TechType {
