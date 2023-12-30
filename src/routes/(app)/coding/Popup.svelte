@@ -1,0 +1,51 @@
+<script lang="ts">
+    import type { CodingProject } from "./Utils";
+    import { Hr } from 'flowbite-svelte';
+
+    export let project: CodingProject;
+
+</script>
+
+<div class="space-y-2">
+    <h1 class="font-bold text-xl underline">{project.title}</h1>
+    <h3 class="text-slate-700 italic">{project.subtitle}</h3>
+    {#if project.desc != ""}
+        <p class="">{project.desc}</p>
+    {/if}
+
+    <Hr/>
+    <div class="flex columns-2 gap-4">
+        {#if project.links && project.links.length}
+            <div class="flex-row w-full">
+                <h1 class="font-semibold">Links:</h1>
+                {#each project.links as { label, url }}
+                    <p class="text-blue-700 hover:text-purple-700 underline"><a href={url}>{label}</a></p>
+                {/each}
+            </div>
+        {/if}
+        {#if project.collaborators && project.collaborators.length}
+            <div class="flex-row w-full">
+                <h1 class="font-semibold">Collaborators:</h1>
+                {#each project.collaborators as collaborator}
+                    <p>{collaborator}</p>
+                {/each}
+            </div>
+        {/if}
+    </div>
+
+    <Hr/>
+    <div class="flex columns-2 gap-4">
+        <div class="justify-start flex-row w-full">
+            <p class="font-bold">Technologies Used:</p>
+            {#each project.stack as tech}
+                <p>{tech}</p>
+            {/each}
+        </div>
+        <div class="justify-start flex-row w-full">
+            <p class="font-bold">Tags:</p>
+            {#each project.tags as tag}
+                <p>{tag}</p>
+            {/each}
+        </div>
+    </div>
+</div>
