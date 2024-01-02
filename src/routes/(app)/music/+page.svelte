@@ -50,11 +50,13 @@
 
 <div class="flex p-5 pb-0 space-x-2">
 	<Button color="dark" class="hidden dark:inline-flex" data-sveltekit-reload href={invertOrder()}>
-		<Icon src={ArrowsUpDown} size="20px" theme="solid" /></Button
-	>
+		<Icon src={ArrowsUpDown} size="20px" theme="solid" class="mr-2" />
+		<p class="font-normal">{data.ascending ? 'Ascending' : 'Descending'}</p>
+	</Button>
 	<Button color="light" class="dark:hidden" data-sveltekit-reload href={invertOrder()}>
-		<Icon src={ArrowsUpDown} size="20px" theme="solid" /></Button
-	>
+		<Icon src={ArrowsUpDown} size="20px" theme="solid" class="mr-2" />
+		<p class="font-normal">{data.ascending ? 'Ascending' : 'Descending'}</p>
+	</Button>
 	<Button color="dark" class="hidden dark:inline-flex"
 		><Chevron
 			><p class="capitalize font-semibold">
