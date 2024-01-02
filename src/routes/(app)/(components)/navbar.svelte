@@ -19,10 +19,6 @@
 		{
 			name: 'Coding',
 			url: '/coding'
-		},
-		{
-			name: 'About Me',
-			url: '/about'
 		}
 	];
 </script>
