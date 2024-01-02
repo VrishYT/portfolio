@@ -33,6 +33,7 @@
 				created_at: string;
 				tags: string[];
 				type: string;
+				visible: boolean;
 			}) => {
 				projects.set(project.title.toLowerCase(), {
 					title: project.title,
@@ -40,7 +41,7 @@
 					links: project.links,
 					dateCreated: new Date(project.created_at),
 					tags: project.tags,
-					visible: false,
+					visible: project.visible,
 					type: project.type as MusicProjectType
 				});
 			}
