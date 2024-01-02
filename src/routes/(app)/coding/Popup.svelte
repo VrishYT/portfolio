@@ -1,14 +1,18 @@
 <script lang="ts">
     import type { CodingProject } from "./Utils";
     import { Hr } from 'flowbite-svelte';
+    import Time from "svelte-time";
 
     export let project: CodingProject;
 
 </script>
 
 <div class="space-y-2">
-    <h1 class="font-bold text-xl underline">{project.title}</h1>
-    <h3 class="text-slate-700 italic">{project.subtitle}</h3>
+    <div class="flex columns-2 justify-between pr-10">
+        <h1 class="font-bold text-xl underline">{project.title}</h1>
+        <Time class="text-slate-600 italic" timestamp={project.timestamp} format="MMMM YYYY"/>
+    </div>
+    <h3 class="text-slate-800 italic">{project.subtitle}</h3>
     {#if project.desc != ""}
         <p class="">{project.desc}</p>
     {/if}
