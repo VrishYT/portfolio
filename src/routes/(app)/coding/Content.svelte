@@ -16,11 +16,13 @@
 <div class="flex p-10 justify-center">
 	<Gallery class="grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
 		{#each [...projects] as [id, project] (id)}
+			{#if project.visible}
 			<!-- <Button on:click={() => showProjectModal(id)} color="dark" class="p-0.5"> -->
 				<Card
 					img={project.img}
 					horizontal
-					class="relative bg-none align-middle justify-start text-left outline-2 hover:outline-black hover:dark:outline-slate-600 outline-none hover:cursor-pointer"
+					class="relative bg-none align-middle justify-start text-left outline-2 hover:outline-black hover:dark:outline-slate-6
+					00 outline-none hover:cursor-pointer"
 					rounded
 					on:click={() => showProjectModal(id)}
 				>
@@ -32,6 +34,7 @@
 					</div>
 				</Card>
 			<!-- </Button> -->
+			{/if }
 		{/each}
 	</Gallery>
 </div>

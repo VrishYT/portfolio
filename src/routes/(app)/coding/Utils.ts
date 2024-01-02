@@ -8,6 +8,7 @@ export interface CodingProject {
 	stack: TechType[];
 	links: { label: string; url: string }[];
 	collaborators: string[];
+	visible: boolean;
 }
 
 export interface IncomingCodingProject extends CodingProject {

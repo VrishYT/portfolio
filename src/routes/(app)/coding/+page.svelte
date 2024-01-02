@@ -27,7 +27,8 @@
                     tags: project.tags,
                     stack: project.stack,
                     links: project.links,
-                    collaborators: project.collaborators
+                    collaborators: project.collaborators,
+                    visible: project.visible
                 });
             }
         );
@@ -60,7 +61,7 @@
                 </p></Chevron
             ></Button
         >
-        <Dropdown>
+        <Dropdown class="z-10">
             <DropdownItem data-sveltekit-reload href={updateOrder('date')}>Date</DropdownItem>
             <DropdownItem data-sveltekit-reload href={updateOrder('name')}>Name</DropdownItem>
         </Dropdown>
@@ -71,7 +72,7 @@
                 </p></Chevron
             ></Button
         >
-        <Dropdown>
+        <Dropdown class="z-10">
             <DropdownItem data-sveltekit-reload href={updateOrder('date')}>Date</DropdownItem>
             <DropdownItem data-sveltekit-reload href={updateOrder('name')}>Name</DropdownItem>
         </Dropdown>
