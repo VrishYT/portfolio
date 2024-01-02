@@ -81,23 +81,25 @@
 </div>
 <div class="flex p-10 pt-5 justify-center">
 	<Gallery class="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
-		{#each [...projects] as [id, { title, img, dateCreated, tags, type }] (id)}
-			<Card {img} class="w-80" rounded shadow href="/music/{id}">
-				<div class="flex flex-row justify-between pb-2">
-					<h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-						{title}
-					</h5>
-					<p class="text-base font-mono tracking-tight text-gray-500">
-						{dateCreated.toLocaleDateString()}
-					</p>
-				</div>
-				<div class="flex justify-between max-h-8">
-					<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
-						{tags.map((tag) => `#${tag}`).join(' ')}
-					</p>
-					<p class="font-semibold text-lg text-right">{MusicProjectType[type]}</p>
-				</div>
-			</Card>
+		{#each [...projects] as [id, { title, img, dateCreated, tags, type, visible }] (id)}
+			{#if visible}
+				<Card {img} class="w-80" rounded shadow href="/music/{id}">
+					<div class="flex flex-row justify-between pb-2">
+						<h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+							{title}
+						</h5>
+						<p class="text-base font-mono tracking-tight text-gray-500">
+							{dateCreated.toLocaleDateString()}
+						</p>
+					</div>
+					<div class="flex justify-between max-h-8">
+						<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
+							{tags.map((tag) => `#${tag}`).join(' ')}
+						</p>
+						<p class="font-semibold text-lg text-right">{MusicProjectType[type]}</p>
+					</div>
+				</Card>
+			{/if}
 		{/each}
 	</Gallery>
 </div>
