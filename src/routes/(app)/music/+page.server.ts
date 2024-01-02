@@ -21,8 +21,6 @@ const Ordering = {
 	}
 };
 
-type MyError = (typeof Ordering)[keyof typeof Ordering];
-
 export async function load({ url }) {
 	const orderBy = url.searchParams.has('orderBy') ? url.searchParams.get('orderBy') : 'date';
 	const order = Ordering[orderBy];

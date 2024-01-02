@@ -3,7 +3,7 @@
 	import type { CodingProject } from "./Utils";
 	import Popup from './Popup.svelte';
 	import { getContext } from 'svelte';
-
+	
     export let projects: Map<string, CodingProject> = new Map();
 
     const { open } = getContext('simple-modal');
@@ -11,8 +11,8 @@
 		open(Popup, { project: projects.get(id) });
 	};
 
-</script>
 
+</script>
 <div class="flex p-10 justify-center">
 	<Gallery class="grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
 		{#each [...projects] as [id, project] (id)}
