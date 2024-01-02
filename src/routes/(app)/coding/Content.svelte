@@ -16,13 +16,13 @@
 <div class="flex p-10 justify-center">
 	<Gallery class="grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
 		{#each [...projects] as [id, project] (id)}
-			<Button on:click={() => showProjectModal(id)} color="dark" class="p-0.5">
+			<!-- <Button on:click={() => showProjectModal(id)} color="dark" class="p-0.5"> -->
 				<Card
 					img={project.img}
 					horizontal
-					class="relative bg-none align-middle justify-start text-left"
+					class="relative bg-none align-middle justify-start text-left outline-2 hover:outline-black hover:dark:outline-slate-600 outline-none hover:cursor-pointer"
 					rounded
-					shadow
+					on:click={() => showProjectModal(id)}
 				>
 					<div class="flex-col">
 						<h1 class="text-black dark:text-white font-bold text-xl">{project.title}</h1>
@@ -31,7 +31,7 @@
 						</p>
 					</div>
 				</Card>
-			</Button>
+			<!-- </Button> -->
 		{/each}
 	</Gallery>
 </div>
