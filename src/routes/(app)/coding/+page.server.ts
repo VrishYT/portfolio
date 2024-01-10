@@ -3,7 +3,7 @@ import { supabase } from '$lib/supabaseClient';
 const Ordering = {
 	date: {
 		column: 'timestamp',
-		ascending: true
+		ascending: false
 	},
 	name: {
 		column: 'title',
