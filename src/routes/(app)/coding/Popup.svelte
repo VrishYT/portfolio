@@ -17,25 +17,27 @@
         <p class="">{project.desc}</p>
     {/if}
 
-    <Hr/>
-    <div class="flex columns-2 gap-4">
-        {#if project.links && project.links.length}
-            <div class="flex-row w-full">
-                <h1 class="font-semibold">Links:</h1>
-                {#each project.links as { label, url }}
-                    <p class="text-blue-700 hover:text-purple-700 underline"><a href={url}>{label}</a></p>
-                {/each}
-            </div>
-        {/if}
-        {#if project.collaborators && project.collaborators.length}
-            <div class="flex-row w-full">
-                <h1 class="font-semibold">Collaborators:</h1>
-                {#each project.collaborators as collaborator}
-                    <p>{collaborator}</p>
-                {/each}
-            </div>
-        {/if}
-    </div>
+    {#if (project.links && project.links.length) || (project.collaborators && project.collaborators.length)}
+        <Hr/>
+        <div class="flex columns-2 gap-4">
+            {#if project.links && project.links.length}
+                <div class="flex-row w-full">
+                    <h1 class="font-semibold">Links:</h1>
+                    {#each project.links as { label, url }}
+                        <p class="text-blue-700 hover:text-purple-700 underline"><a href={url}>{label}</a></p>
+                    {/each}
+                </div>
+            {/if}
+            {#if project.collaborators && project.collaborators.length}
+                <div class="flex-row w-full">
+                    <h1 class="font-semibold">Collaborators:</h1>
+                    {#each project.collaborators as collaborator}
+                        <p>{collaborator}</p>
+                    {/each}
+                </div>
+            {/if}
+        </div>  
+    {/if}
 
     <Hr/>
     <div class="flex columns-2 gap-4">
@@ -45,11 +47,13 @@
                 <p>{tech}</p>
             {/each}
         </div>
-        <div class="justify-start flex-row w-full">
-            <p class="font-bold">Tags:</p>
-            {#each project.tags as tag}
-                <p>{tag}</p>
-            {/each}
-        </div>
+        {#if project.tags && project.tags.length}
+            <div class="justify-start flex-row w-full">
+                <p class="font-bold">Tags:</p>
+                {#each project.tags as tag}
+                    <p>{tag}</p>
+                {/each}
+            </div>
+        {/if}
     </div>
 </div>
